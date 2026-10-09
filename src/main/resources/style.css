@@ -1,0 +1,62 @@
+.root {
+    -fx-background-color: #f4f7fb;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-font-size: 13px;
+}
+
+.header {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent #e6eaf0 transparent;
+}
+
+.page-content { -fx-background-color: #f4f7fb; }
+.title-label { -fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #1f2d3d; }
+.subtitle-label, .muted-label { -fx-text-fill: #68778a; }
+.section-title { -fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #26384d; }
+.card-caption { -fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #7a8796; }
+.card-value { -fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #1f2d3d; }
+
+.summary-card, .panel {
+    -fx-background-color: white;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #e4e9ef;
+    -fx-padding: 16px;
+    -fx-effect: dropshadow(three-pass-box, rgba(24,39,75,0.06), 10, 0, 0, 3);
+}
+.summary-card { -fx-min-width: 220px; }
+.panel { -fx-min-width: 300px; }
+
+.text-field, .combo-box {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cfd7e3;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-padding: 7px 9px;
+}
+
+.button {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 14px;
+    -fx-background-radius: 6px;
+    -fx-cursor: hand;
+}
+.button:hover { -fx-opacity: 0.90; }
+.secondary-button { -fx-background-color: #475569; }
+.danger-button { -fx-background-color: #b91c1c; }
+
+.progress-bar > .track { -fx-background-color: #e8edf4; }
+.progress-bar > .bar { -fx-background-color: #2563eb; }
+
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 6px;
+}
+.table-view .column-header-background { -fx-background-color: #f8fafc; }
+.table-view .column-header { -fx-background-color: transparent; -fx-font-weight: bold; }
+.status-label { -fx-text-fill: #64748b; -fx-font-size: 12px; }
+.chart { -fx-padding: 4px; }
+.scroll-pane, .scroll-pane > .viewport { -fx-background-color: transparent; }

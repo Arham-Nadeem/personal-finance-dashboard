@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.personalfinance.dashboard.DashboardController" prefWidth="1180" prefHeight="820">
+    <top>
+        <VBox spacing="5" styleClass="header">
+            <padding><Insets top="22" right="28" bottom="18" left="28"/></padding>
+            <Label text="Personal Finance Dashboard" styleClass="title-label"/>
+            <Label text="Track cash flow, spending patterns, and savings progress in one place." styleClass="subtitle-label"/>
+        </VBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER">
+            <content>
+                <VBox spacing="18" styleClass="page-content">
+                    <padding><Insets top="18" right="28" bottom="28" left="28"/></padding>
+
+                    <HBox spacing="14">
+                        <VBox spacing="6" styleClass="summary-card" HBox.hgrow="ALWAYS">
+                            <Label text="TOTAL INCOME" styleClass="card-caption"/>
+                            <Label fx:id="totalIncomeLabel" text="\$0.00" styleClass="card-value"/>
+                        </VBox>
+                        <VBox spacing="6" styleClass="summary-card" HBox.hgrow="ALWAYS">
+                            <Label text="TOTAL EXPENSES" styleClass="card-caption"/>
+                            <Label fx:id="totalExpensesLabel" text="\$0.00" styleClass="card-value"/>
+                        </VBox>
+                        <VBox spacing="6" styleClass="summary-card" HBox.hgrow="ALWAYS">
+                            <Label text="NET SAVINGS" styleClass="card-caption"/>
+                            <Label fx:id="netSavingsLabel" text="\$0.00" styleClass="card-value"/>
+                        </VBox>
+                    </HBox>
+
+                    <HBox spacing="18" alignment="TOP_LEFT">
+                        <VBox spacing="14" styleClass="panel" HBox.hgrow="ALWAYS">
+                            <Label text="Add income" styleClass="section-title"/>
+                            <GridPane hgap="10" vgap="10">
+                                <Label text="Source" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                                <TextField fx:id="incomeSourceField" promptText="e.g., Salary" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                                <Label text="Amount" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                                <TextField fx:id="incomeAmountField" promptText="0.00" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                            </GridPane>
+                            <Button text="Add income" onAction="#handleAddIncome" maxWidth="Infinity"/>
+                        </VBox>
+
+                        <VBox spacing="14" styleClass="panel" HBox.hgrow="ALWAYS">
+                            <Label text="Add expense" styleClass="section-title"/>
+                            <GridPane hgap="10" vgap="10">
+                                <Label text="Description" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                                <TextField fx:id="expenseDescriptionField" promptText="e.g., Grocery run" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                                <Label text="Amount" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                                <TextField fx:id="expenseAmountField" promptText="0.00" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                                <Label text="Category" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                                <ComboBox fx:id="categoryComboBox" GridPane.rowIndex="2" GridPane.columnIndex="1" maxWidth="Infinity"/>
+                            </GridPane>
+                            <Button text="Add expense" onAction="#handleAddExpense" maxWidth="Infinity"/>
+                        </VBox>
+
+                        <VBox spacing="12" styleClass="panel" HBox.hgrow="ALWAYS">
+                            <Label text="Savings goal" styleClass="section-title"/>
+                            <TextField fx:id="savingsGoalField" promptText="Monthly goal"/>
+                            <Button text="Set goal" onAction="#handleSetGoal" maxWidth="Infinity"/>
+                            <ProgressBar fx:id="savingsProgressBar" progress="0" maxWidth="Infinity"/>
+                            <Label fx:id="savingsProgressLabel" text="Set a savings goal to track progress" wrapText="true" styleClass="muted-label"/>
+                        </VBox>
+                    </HBox>
+
+                    <HBox spacing="18" alignment="TOP_LEFT">
+                        <VBox spacing="10" styleClass="panel" HBox.hgrow="ALWAYS">
+                            <Label text="Spending by category" styleClass="section-title"/>
+                            <PieChart fx:id="expensePieChart" legendSide="RIGHT" prefHeight="310"/>
+                        </VBox>
+                        <VBox spacing="10" styleClass="panel" HBox.hgrow="ALWAYS">
+                            <Label text="Monthly cash flow" styleClass="section-title"/>
+                            <BarChart fx:id="monthlyBarChart" prefHeight="310" animated="false">
+                                <xAxis><CategoryAxis label="Month"/></xAxis>
+                                <yAxis><NumberAxis label="Amount (\$)" forceZeroInRange="true"/></yAxis>
+                            </BarChart>
+                        </VBox>
+                    </HBox>
+
+                    <VBox spacing="10" styleClass="panel">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label text="Transaction history" styleClass="section-title" HBox.hgrow="ALWAYS"/>
+                            <Pane HBox.hgrow="ALWAYS"/>
+                            <Button text="Export CSV" onAction="#handleExportCsv" styleClass="secondary-button"/>
+                            <Button text="Delete selected" onAction="#handleDeleteSelected" styleClass="danger-button"/>
+                        </HBox>
+                        <TableView fx:id="transactionTable" prefHeight="280">
+                            <columns>
+                                <TableColumn fx:id="dateColumn" text="Date" prefWidth="110"/>
+                                <TableColumn fx:id="typeColumn" text="Type" prefWidth="100"/>
+                                <TableColumn fx:id="descriptionColumn" text="Description" prefWidth="260"/>
+                                <TableColumn fx:id="categoryColumn" text="Category" prefWidth="140"/>
+                                <TableColumn fx:id="amountColumn" text="Amount" prefWidth="120"/>
+                            </columns>
+                        </TableView>
+                        <Label fx:id="statusLabel" text="Ready" styleClass="status-label"/>
+                    </VBox>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+</BorderPane>
