@@ -73,6 +73,14 @@ This project demonstrates:
 - Financial KPI calculation and visualization
 - CSV export and user-input validation
 
+## Screenshots
+
+### Dashboard Overview
+![Dashboard Overview](screenshots/dashboard-overview.png)
+
+### Financial Analytics & Transaction History
+![Financial Analytics & Transactions History](screenshots/analytics-transaction-history.png)
+
 ## Future Improvements
 
 - Date-range and category filtering
